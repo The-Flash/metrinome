@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { Key } from "react";
 
 type Props = {
   value: string;
