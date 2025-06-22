@@ -130,7 +130,7 @@ export default function Metrinome() {
         />
         {isPlaying ? (
           <Button className="rounded-full" onClick={stop}>
-            <StopIcon className="sm:size-5 text-white" />
+            <StopIcon className="size-5 text-white" />
           </Button>
         ) : (
           <Button className="rounded-full" onClick={play}>
