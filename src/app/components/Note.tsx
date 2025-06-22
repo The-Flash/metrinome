@@ -12,7 +12,7 @@ export default function Note({ value, className }: Props) {
         [className ?? ""]: true,
       })}
     >
-      <h2 className="font-bold text-8xl">{value}</h2>
+      <h2 className="font-bold lg:text-8xl text-4xl">{value}</h2>
     </div>
   );
 }

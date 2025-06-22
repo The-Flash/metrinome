@@ -122,19 +122,19 @@ export default function Metrinome() {
         }
       />
       <BeatIndicator beats={beats} activeBeat={activeBeat} />
-      <div className="w-full flex space-x-20 justify-center items-center">
+      <div className="w-full flex space-x-10 justify-center items-center">
         <Measure
           onChange={(value) =>
             dispatch({ type: "MEASURE_CHANGE", payload: value })
           }
         />
         {isPlaying ? (
-          <Button className="w-20 h-20 rounded-full" onClick={stop}>
-            <StopIcon className="size-10 text-white" />
+          <Button className="rounded-full" onClick={stop}>
+            <StopIcon className="sm:size-5 text-white" />
           </Button>
         ) : (
-          <Button className="w-20 h-20 rounded-full" onClick={play}>
-            <PlayIcon className="size-10 text-white" />
+          <Button className="rounded-full" onClick={play}>
+            <PlayIcon className="size-5 text-white" />
           </Button>
         )}
       </div>

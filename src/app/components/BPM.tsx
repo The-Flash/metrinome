@@ -44,12 +44,16 @@ export default function BPM(
     onBPMChange?.(value);
   }, [value]);
   return (
-    <>
+    <div className="w-full flex justify-center items-center flex-col space-y-10 px-10">
       <div>
-        <h2 className="text-white font-semibold text-2xl">{value} BPM</h2>
+        <h2 className="text-white font-semibold text-2xl">
+          {value} <span className="text-sm">BPM</span>
+        </h2>
       </div>
       <div className="flex w-full space-x-7">
-        <Button onClick={decreaseBPM}>-</Button>
+        <Button className="w-10 h-10 text-2xl" onClick={decreaseBPM}>
+          -
+        </Button>
         <Slider
           min={20}
           max={400}
@@ -60,8 +64,10 @@ export default function BPM(
             changeValue(v[0]);
           }}
         />
-        <Button onClick={increaseBPM}>+</Button>
+        <Button className="w-10 h-10 text-2xl" onClick={increaseBPM}>
+          +
+        </Button>
       </div>
-    </>
+    </div>
   );
 }
