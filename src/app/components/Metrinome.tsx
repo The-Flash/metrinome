@@ -6,7 +6,7 @@ import { PlayIcon, StopIcon } from "@heroicons/react/24/solid";
 import { useEffect, useReducer } from "react";
 import BeatIndicator from "./BeatIndicator";
 import BPM from "./BPM";
-import Measure from "./Measure";
+import Measure, { MeasureValue } from "./Measure";
 import Note from "./Note";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +32,10 @@ type Action =
     }
   | {
       type: "ADVANCE_BEAT";
+    }
+  | {
+      type: "MEASURE_CHANGE";
+      payload: MeasureValue;
     };
 
 const initialState: State = {
@@ -40,7 +44,7 @@ const initialState: State = {
   measure: "4/4",
   note: "A",
   beats: 4,
-  activeBeat: -1,
+  activeBeat: 0,
 };
 
 function reducer(state: State, action: Action) {
@@ -60,7 +64,7 @@ function reducer(state: State, action: Action) {
     case "STOP": {
       return {
         ...state,
-        activeBeat: -1,
+        activeBeat: 0,
         isPlaying: false,
       };
     }
@@ -69,6 +73,12 @@ function reducer(state: State, action: Action) {
         ...state,
         activeBeat: (state.activeBeat + 1) % state.beats,
         note: getRandomMusicalNote(),
+      };
+    case "MEASURE_CHANGE":
+      return {
+        ...state,
+        isPlaying: false,
+        beats: action.payload.beats,
       };
     default:
       return state;
@@ -114,7 +124,11 @@ export default function Metrinome() {
       />
       <BeatIndicator beats={beats} activeBeat={activeBeat} />
       <div className="w-full flex space-x-20 justify-center items-center">
-        <Measure />
+        <Measure
+          onChange={(value) =>
+            dispatch({ type: "MEASURE_CHANGE", payload: value })
+          }
+        />
         {isPlaying ? (
           <Button className="w-20 h-20 rounded-full" onClick={stop}>
             <StopIcon className="size-10 text-white" />
