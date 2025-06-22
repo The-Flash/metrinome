@@ -1,10 +1,15 @@
-const audioCtx = new (window?.AudioContext ||
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (window as any)?.webkitAudioContext)();
+let audioCtx: AudioContext | undefined;
+if (typeof window !== "undefined")
+  audioCtx = new (window?.AudioContext ||
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any)?.webkitAudioContext)();
 
 export function tick(
   { frequency }: { frequency: number } = { frequency: 1000 }
 ) {
+  if (!audioCtx) {
+    return;
+  }
   const oscillator = audioCtx.createOscillator();
   const gainNode = audioCtx.createGain();
   oscillator.type = "square";
