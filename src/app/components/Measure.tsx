@@ -8,10 +8,11 @@ import {
 } from "@/components/ui/select";
 
 const MEASURES = [
-  { value: "2/4", label: "2/4" },
-  { value: "3/4", label: "3/4" },
-  { value: "4/4", label: "4/4" },
-  { value: "5/4", label: "5/4" },
+  { value: "2/4", label: "2" },
+  { value: "3/4", label: "3" },
+  { value: "4/4", label: "4" },
+  { value: "5/4", label: "5" },
+  { value: "6/4", label: "6" },
 ];
 
 export type MeasureValue = {

@@ -8,7 +8,6 @@ import BeatIndicator from "./BeatIndicator";
 import BPM from "./BPM";
 import Measure, { MeasureValue } from "./Measure";
 import Note from "./Note";
-import { cn } from "@/lib/utils";
 
 type State = {
   bpm: number;
@@ -39,7 +38,7 @@ type Action =
     };
 
 const initialState: State = {
-  bpm: 100,
+  bpm: 120,
   isPlaying: false,
   measure: "4/4",
   note: "A",
